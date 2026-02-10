@@ -1,0 +1,37 @@
+{% load static %}
+
+
+
+
+{% include 'nav.html' %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выход</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    {% include 'nav.html' %}
+    
+    <div class="registration-container">
+        <h1>Выход из системы</h1>
+        
+        <p style="text-align: center; margin-bottom: 30px; color: #555;">
+            Вы уверены, что хотите выйти?
+        </p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="submit-button" style="background-color: #e74c3c;">
+                Да, выйти
+            </button>
+        </form>
+        
+        <div class="login-link">
+            <p><a href="{% url 'main' %}">Вернуться на главную</a></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,265 @@
+{% load static %}
+{% include 'nav.html' %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог сладостей</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="icon" href="{% static 'icon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    
+    
+    <header>
+        <h1>Каталог сладостей</h1>
+        {% if user.is_authenticated %}
+            <p style="text-align: center; color: #27ae60; margin-top: 10px;">
+                Добро пожаловать, {{ user.username }}! Теперь вы можете добавлять товары в корзину.
+            </p>
+        {% else %}
+            <p style="text-align: center; color: #e74c3c; margin-top: 10px;">
+                Чтобы добавлять товары в корзину, пожалуйста, войдите или зарегистрируйтесь.
+            </p>
+        {% endif %}
+    </header>
+
+    <main>
+        <section>
+            <h2>Шоколадные плитки</h2>
+            <div class="catalog-grid">
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <img src="{% static 'photo1.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Молочный шоколад "Sock-o-late"</h3>
+                        <div class="product-composition">
+                            <div class="composition-title">Состав:</div>
+                            <div class="composition-text">какао бобы, сливки, молоко сухое, сахар, какао масло, растительное масло, ванильный сахар.</div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price">Цена: <span class="price-value">199</span><span class="currency">₽</span></div>
+                            {% if user.is_authenticated %}
+                                <button class="buy-button" onclick="sosl()">В корзину</button>
+                            {% else %}
+                                <button class="buy-button hidden" onclick="sosl()" style="display: none;">В корзину</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <img src="{% static 'photo1.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Белый шоколад "Sock-o-late Racist Edition"</h3>
+                        <div class="product-composition">
+                            <div class="composition-title">Состав:</div>
+                            <div class="composition-text">какао масло, сухое молоко сахар, ванильный сахар.</div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price">Цена: <span class="price-value">219</span><span class="currency">₽</span></div>
+                            {% if user.is_authenticated %}
+                                <button onclick="sosl()" class="buy-button">В корзину</button>
+                            {% else %}
+                                <button onclick="sosl()" class="buy-button hidden" style="display: none;">В корзину</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <h2>Линейка "Dinker"</h2>
+            <div class="catalog-grid">
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <img src="{% static 'photo1.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Батончик "Dinker Town"</h3>
+                        <p class="product-description">Хрустящий батончик с нежными злаками и молочным шоколадом.</p>
+                        <div class="product-composition">
+                            <div class="composition-title">Состав:</div>
+                            <div class="composition-text">воздушные злаки, карамель, арахис, фирменный молочный шоколад.</div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price">Цена: <span class="price-value">89</span><span class="currency">₽</span></div>
+                            {% if user.is_authenticated %}
+                                <button onclick="sosl()" class="buy-button">В корзину</button>
+                            {% else %}
+                                <button onclick="sosl()" class="buy-button hidden" style="display: none;">В корзину</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <img src="{% static 'photo1.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Батончик "Dinker Decoy"</h3>
+                        <p class="product-description">Лёгкий и воздушный батончик с нугой и хрустящим рисом.</p>
+                        <div class="product-composition">
+                            <div class="composition-title">Состав:</div>
+                            <div class="composition-text">воздушный рис, нуга, фирменный молочный шоколад.</div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price">Цена: <span class="price-value">85</span><span class="currency">₽</span></div>
+                            {% if user.is_authenticated %}
+                                <button onclick="sosl()" class="buy-button">В корзину</button>
+                            {% else %}
+                                <button onclick="sosl()" class="buy-button hidden" style="display: none;">В корзину</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <img src="{% static 'photo1.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Шоколадное яйцо "Dinker No Prize"</h3>
+                        <p class="product-description">Молочное шоколадное яйцо с сюрпризом внутри.</p>
+                        <div class="product-composition">
+                            <div class="composition-title">Состав:</div>
+                            <div class="composition-text">фирменный молочный шоколад, карамельная начинка.</div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price">Цена: <span class="price-value">120</span><span class="currency">₽</span></div>
+                            {% if user.is_authenticated %}
+                                <button onclick="sosl()" class="buy-button">В корзину</button>
+                            {% else %}
+                                <button onclick="sosl()" class="buy-button hidden" style="display: none;">В корзину</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <img src="{% static 'photo1.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Мини-батончик "Dinker Credit Cards"</h3>
+                        <p class="product-description">Тонкий хрустящий вафельный батончик в белом шоколаде.</p>
+                        <div class="product-composition">
+                            <div class="composition-title">Состав:</div>
+                            <div class="composition-text">вафля, карамель, фирменный белый шоколад.</div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price">Цена: <span class="price-value">65</span><span class="currency">₽</span></div>
+                            {% if user.is_authenticated %}
+                                <button onclick="sosl()" class="buy-button">В корзину</button>
+                            {% else %}
+                                <button onclick="sosl()" class="buy-button hidden" style="display: none;">В корзину</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <img src="{% static 'photo1.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Кекс "Dinker Toxic"</h3>
+                        <p class="product-description">Влажный шоколадный кекс с яркой зеленой глазурью.</p>
+                        <div class="product-composition">
+                            <div class="composition-title">Состав:</div>
+                            <div class="composition-text">шоколадный бисквит, кремовая начинка, фирменный молочный шоколад (глазурь).</div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price">Цена: <span class="price-value">110</span><span class="currency">₽</span></div>
+                            {% if user.is_authenticated %}
+                                <button onclick="sosl()" class="buy-button">В корзину</button>
+                            {% else %}
+                                <button onclick="sosl()" class="buy-button hidden" style="display: none;">В корзину</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <img src="{% static 'photo1.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Пончик "Dinker Null"</h3>
+                        <p class="product-description">Классический сахарный пончик с цветной посыпкой.</p>
+                        <div class="product-composition">
+                            <div class="composition-title">Состав:</div>
+                            <div class="composition-text">дрожжевое тесто, сахарная глазурь, кондитерская посыпка.</div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price">Цена: <span class="price-value">95</span><span class="currency">₽</span></div>
+                            {% if user.is_authenticated %}
+                                <button onclick="sosl()" class="buy-button">В корзину</button>
+                            {% else %}
+                                <button onclick="sosl()" class="buy-button hidden" style="display: none;">В корзину</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <img src="{% static 'photo1.jpg' %}">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Батончик "Dinker BuyElo"</h3>
+                        <p class="product-description">Хрустящий вафельный батончик с нежной кремовой начинкой.</p>
+                        <div class="product-composition">
+                            <div class="composition-title">Состав:</div>
+                            <div class="composition-text">вафля, кремовая начинка, измельченный миндаль, фирменный молочный шоколад.</div>
+                        </div>
+                        <div class="product-price">
+                            <div class="price">Цена: <span class="price-value">99</span><span class="currency">₽</span></div>
+                            {% if user.is_authenticated %}
+                                <button onclick="sosl()" class="buy-button">В корзину</button>
+                            {% else %}
+                                <button onclick="sosl()" class="buy-button hidden" style="display: none;">В корзину</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© Каталог сладостей, 2023</p>
+    </footer>
+
+<script>
+    function sosl() {
+        alert('Товар добавлен в корзину!')
+    }
+</script>
+
+</body>
+</html>

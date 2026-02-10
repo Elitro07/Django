@@ -1,0 +1,45 @@
+{% load static %}
+{% include 'nav.html' %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'register_style.css' %}">
+</head>
+<body>
+    {% include 'nav.html' %}
+    
+    <div class="registration-container">
+        <h1>Вход в систему</h1>
+        
+        {% if form.errors %}
+            <div style="color: #e74c3c; background-color: #fde8e8; padding: 10px; border-radius: 6px; margin-bottom: 20px;">
+                Неправильное имя пользователя или пароль. Попробуйте снова.
+            </div>
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="form-row">
+                <label for="id_username">Имя пользователя:</label>
+                <input type="text" name="username" id="id_username" required>
+            </div>
+            
+            <div class="form-row">
+                <label for="id_password">Пароль:</label>
+                <input type="password" name="password" id="id_password" required>
+            </div>
+            
+            <button type="submit" class="submit-button">Войти</button>
+        </form>
+        
+        <div class="login-link">
+            <p>Нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+        </div>
+    </div>
+</body>
+</html>
